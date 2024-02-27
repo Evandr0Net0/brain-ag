@@ -15,3 +15,6 @@ class Producer(models.Model):
     arable_area_hectares = models.IntegerField(blank=False, null=False)
     vegetation_area_hectares = models.IntegerField(blank=False, null=False)
     planted_types = models.CharField(max_length=200)
+
+    def __self__(self):
+        return self.nome
