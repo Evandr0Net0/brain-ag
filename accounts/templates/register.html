@@ -1,0 +1,59 @@
+{% extends "base_acc.html" %} {% block content %} {% load widget_tweaks %}
+
+<div class="card shadow-lg border-0 rounded-lg mt-4">
+    <div class="card-header"  style="text-align: center";>
+        <figure>
+            <a href="/index/">
+            <img src="/static/assets/img/logo_brain.png" href="/index/">
+            </a>
+            
+          </figure>
+        <h3 class="text-center font-weight-light my-3" style="padding-top: 30px;">Criar Conta</h3>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        {{ user_form.username.errors }}
+                        <div class="form-floating">
+                            {% render_field user_form.username placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                            <label for="inputUserName">Usuário</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        {{ user_form.password1.errors }}
+                        <div class="form-floating">
+                            {% render_field user_form.password1 placeholder="Senha" class+="form-control" id="inputPass1" %}
+                            <label for="inputPass1">Senha</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        {{ user_form.password2.errors }}
+                        <div class="form-floating">
+                            {% render_field user_form.password2 placeholder="Confirmar" class+="form-control" id="inputPass2" %}
+                            <label for="inputPass2">Confirmar Senha</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% csrf_token %}
+            <div class="mt-4 mb-0">
+                <div class="d-grid">
+                    <input class="btn btn-primary btn-block" type="submit" value="Cadastrar" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer text-center py-3">
+        <div class="small">
+            <a>Já possui uma conta? </a></a><a href="/login/">Entrar </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

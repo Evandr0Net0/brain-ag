@@ -1,0 +1,50 @@
+{% extends "base_acc.html" %} {% block content %} {% load widget_tweaks %}
+
+<div class="card shadow-lg border-0 rounded-lg mt-4">
+    <div class="card-header" >
+        <figure style="text-align: center;">
+            <a href="/index/">
+            <img src="/static/assets/img/logo_brain.png" href="/index/">
+            </a>
+            
+          </figure>
+        <h3 class="text-center font-weight-light my-3">Login</h3>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        {{ login_form.username.erros }}
+                        <div class="form-floating">
+                            {% render_field login_form.username placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                            <label for="inputUserName">Usuário</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        {{ login_form.password.erros }}
+                        <div class="form-floating">
+                            {% render_field login_form.password placeholder="Senha" class+="form-control" id="inputPass1" %}
+                            <label for="inputPass1">Senha</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% csrf_token %}
+            <div class="mt-4 mb-0">
+                <div class="d-grid">
+                    <input class="btn btn-primary btn-block" type="submit" value="Entrar" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer text-center py-3">
+        <div class="small">
+            <a>Não possui uma conta? </a></a><a href="/register/">Criar</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<h1 class="mt-4" style="width:100%px;display: inline-block;">Novo Produtor</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/index/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/producers/">Home</a></li>
+    <li class="breadcrumb-item">Criar Novo</li>
+</ol>
+<div class="card shadow-lg border-0 rounded-lg mt-1" id="div_form_add_prod">
+    <div class="card-header-pills">
+        <h5 style="padding-left: 40px; padding-top: 10px;">Cadastro de Produtor</h5>
+    </div>
+    <div class="row mb-1">
+        <div class="col-md-3" style="padding-left: 45px;">
+            <label id="form_add_prod" class="mt-3" for="type">TIPO:</label>
+            <select class="form-control" name="type" id="type_pessoa">
+                <option value="PESSOA FÍSICA">PESSOA FÍSICA</option>
+                <option value="PESSOA JURÍDICA">PESSOA JURÍDICA</option>
+            </select>
+        </div>
+    </div>
+    <form method="post" style="background-color: #ffffff !important; padding: 30px;" id="form_add">
+        {% csrf_token %}
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="form-floating mb-3 mb-md-0" style="background-color: #ffffff !important;">
+                    {% render_field form.cpforcnpj placeholder="Área total"class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputFirstName">Cpf/Cnpj</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating">
+                    {% render_field form.name placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputLastName">Nome</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="form-floating mb-3 mb-md-0" style="background-color: #ffffff !important;">
+                    {% render_field form.farm_name placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputFirstName">Nome da fazenda</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    {% render_field form.city placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputLastName">Cidade</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    {% render_field form.state placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputLastName">Estado</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="form-floating mb-3 mb-md-0" style="background-color: #ffffff !important;">
+                    {% render_field form.total_area_hectares placeholder="Área total"class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputFirstName">Área total da fazenda</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    {% render_field form.arable_area_hectares placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputLastName">Área agricultável</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    {% render_field form.vegetation_area_hectares placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputLastName">Área de vegetação</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="form-floating">
+                    {% render_field form.planted_types placeholder="Usuário" class+="form-control"id="inputUserName" %}
+                    <label id="form_add_prod" for="inputLastName">Culturas plantadas</label>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+
+        
+            <button class="btn btn-primary btn-block" type="submit"><i class="fa-solid fa-user-plus"></i> Salvar</button>
+            <a class="btn btn-secondary btn-block" href="/producers/" style="margin-left: 30px;"><i class="fa fa-undo" aria-hidden="true"></i> Voltar</a>
+           
+            
+
+        </div>
+
+</div>
+</form>
+</div>
+</div>
+
+
+</div>
+<script>
+    
+</script>
+{% endblock %}

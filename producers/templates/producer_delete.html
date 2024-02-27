@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid px-4" style="margin-top: 25px; margin-bottom: 100px;">
+    <h1 class="mt-4">Exclusão de Cadastro</h1>
+    </ol>
+
+    <div class="card mb-4" style="margin-top: 40px;">
+        <div class="card-header">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            Detalhes
+        </div>
+        <div class="card-body">
+            <p><strong>CPF/CNPJ:</strong> {{ object.cpforcnpj }}</p>
+            <p><strong>NOME:</strong> {{ object.name }}</p>
+            <p><strong>NOME DA FAZENDA:</strong> {{ object.farm_name }}</p>
+            <p><strong>CIDADE:</strong> {{ object.city }}</p>
+            <p><strong>ESTADO:</strong> {{ object.state }}</p>
+        </div>
+    </div>
+    <div class="card mb-4" style="margin-top: 20px;">
+        <div class="card-header">
+            <i class="fa fa-leaf" aria-hidden="true"></i>
+            Dados em Hectares
+        </div>
+        <div class="card-body">
+            <p><strong>ÁREA TOTAL:</strong> {{ object.total_area_hectares }}ha</p>
+            <p><strong>ÁREA AGRICULTÁVEL:</strong> {{ object.arable_area_hectares }}ha</p>
+            <p><strong>ÁREA DE VEGETAÇÃO:</strong> {{ object.vegetation_area_hectares }}ha</p>
+            <p><strong>CULTURAS PLANTADAS:</strong> {{ object.planted_types }}</p>
+        
+        </div>
+    </div>
+    <div class="card-footer text-center py-3">
+        <h3 class="mt-4" style="padding-bottom: 25px;">Tem certeza que deseja excluir o registro?
+            </h1>
+            </ol>
+            <form method="post">
+                {% csrf_token %}
+                <div class="buttons-container">
+                    <button type="submit" class="btn btn-danger" style="margin-right: 15px;"><i class="fa fa-trash"
+                            aria-hidden="true"></i>
+                        Deletar</button>
+                    <a href="{% url 'producer_detail' pk=object.pk %}" class="btn btn-secondary"><i class="fa fa-ban"
+                            aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </form>
+
+    </div>
+</div>
+{% endblock %}

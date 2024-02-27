@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid px-4">
+<h1 class="mt-4" style="width: 180px;display: inline-block;">Produtores</h1>
+{% if user.is_authenticated %}
+<a id="btn_novo_prod" class="btn btn-primary" href="/new_producer/"
+    style="display: inline-block;margin-left: 70px;"><i class="fa fa-user-plus" aria-hidden="true"></i> Cadastrar
+    Novo</a>
+{% endif %}
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/index/">Home</a></li>
+    <li class="breadcrumb-item active">Produtores</li>
+</ol>
+<div class="card mb-2">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Cadastro
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>CPF / CNPJ</th>
+                    <th>NOME DO PRODUTOR</th>
+                    <th>NOME DA FAZENDA</th>
+                    <th>CIDADE</th>
+                    <th>ESTADO</th>
+                    <th>AÇÃO</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>CPF / CNPJ</th>
+                    <th>NOME DO PRODUTOR</th>
+                    <th>NOME DA FAZENDA</th>
+                    <th>CIDADE</th>
+                    <th>ESTADO</th>
+                    <th>AÇÃO</th>
+                </tr>
+            </tfoot>
+
+            {% if producers %}
+            <tbody>
+                {% for producer in producers %}
+                <tr>
+                    <td>{{ producer.cpforcnpj }}</td>
+                    <td>{{ producer.name }}</td>
+                    <td>{{ producer.farm_name }}</td>
+                    <td>{{ producer.city }}</td>
+                    <td>{{ producer.state }}</td>
+                    <td><a href="{% url 'producer_detail' producer.pk %}" class="link-primary" id="prod_detail" style="text-decoration: none;"><i class="fa fa-plus" aria-hidden="true"></i> DETALHAR
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
